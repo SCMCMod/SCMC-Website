@@ -194,7 +194,7 @@ textarea {
         color: white;
     }
     .navbar-default.affix {
-        background-color: white;
+        background-color: #333333;
         border-color: rgba(34, 34, 34, 0.1);
     }
     .navbar-default.affix .navbar-header .navbar-brand {

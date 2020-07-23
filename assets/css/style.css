@@ -16,12 +16,23 @@
     text-transform: uppercase;
     letter-spacing: 2px;
 }
-html,
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
 body {
     height: 100%;
     width: 100%;
-}
-body {
+    background: url("../img/bg.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif';
 }
 a {
@@ -35,10 +46,13 @@ a:focus {
     color: #fcbd20;
 }
 hr {
-    max-width: 100px;
-    margin: 25px auto 0;
-    border-width: 1px;
-    border-color: rgba(34, 34, 34, 0.1);
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 25px auto 0;
+  padding: 0;
+  border-color: rgba(34, 34, 34, 0.1);
 }
 hr.light {
     border-color: white;
@@ -58,6 +72,35 @@ p {
     line-height: 1.5;
     margin-bottom: 20px;
 }
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  border-style: none;
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+  resize: vertical;
+}
+
 .navbar-default {
     background-color: white;
     border-color: rgba(34, 34, 34, 0.05);
@@ -108,7 +151,7 @@ p {
 }
 @media (min-width: 768px) {
     .navbar-default {
-        background-color: transparent;
+        background-color: #333333d6;
         border-color: transparent;
     }
     .navbar-default .navbar-header .navbar-brand {
@@ -151,9 +194,7 @@ header {
     width: 100%;
     height: auto;
     overflow-y: hidden;
-    background: url("../img/bg.png");
     color: white;
-    background-repeat: no-repeat;
 }
 header .header-content {
     text-align: center;
@@ -217,6 +258,12 @@ header .device-container .screen img {
 section {
     padding: 100px 0;
 }
+section.filler .section-heading{
+    padding: 100px 0;
+    height: 350px;
+    width: 100%;
+}
+
 section h2 {
     font-size: 50px;
 }
@@ -249,6 +296,11 @@ section.download .badges .badge-link img {
         font-size: 70px;
     }
 }
+
+section.features {
+	background: #000000c7
+}
+
 section.features .section-heading {
     margin-bottom: 100px;
 }
@@ -298,8 +350,8 @@ section.cta {
     background-size: cover;
     -o-background-size: cover;
     background-position: center;
-    background-image: url('../img/bg.png');
     padding: 250px 0;
+    background: #000000c7
 }
 section.cta h2 {
     color: white;
@@ -494,13 +546,92 @@ td {
     padding: 15px;
     max-width: 100%;
 }
-img {
-    border-style: none;
-}
 .navbar-icon {
     border-radius: 50%;
     position: fixed;
     top: 8px;
     bottom: 16px;
     max-height: 32px;
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden,
+[hidden] {
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  /* 1 */
+}
+
+/*
+ * Extends the .sr-only class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.sr-only.focusable:active,
+.sr-only.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: inherit;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix::before,
+.clearfix::after {
+  content: " ";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
 }
